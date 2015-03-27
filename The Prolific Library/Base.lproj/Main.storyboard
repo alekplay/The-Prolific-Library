@@ -134,6 +134,7 @@
                             <constraint firstItem="bBT-d8-70t" firstAttribute="leading" secondItem="QnW-6e-Arz" secondAttribute="leadingMargin" id="3YA-YU-6AN"/>
                             <constraint firstItem="Rm8-md-Tco" firstAttribute="trailing" secondItem="QnW-6e-Arz" secondAttribute="trailingMargin" id="4EJ-42-lMn"/>
                             <constraint firstItem="FYe-jk-1NW" firstAttribute="trailing" secondItem="QnW-6e-Arz" secondAttribute="trailingMargin" id="AzY-Uv-aXL"/>
+                            <constraint firstItem="FYe-jk-1NW" firstAttribute="top" secondItem="qfR-N0-fpp" secondAttribute="bottom" priority="250" constant="8" id="DPm-9h-eqA"/>
                             <constraint firstItem="FYe-jk-1NW" firstAttribute="top" secondItem="UjJ-NU-QVA" secondAttribute="bottom" constant="8" id="EJo-VK-dR9"/>
                             <constraint firstItem="UjJ-NU-QVA" firstAttribute="top" secondItem="qfR-N0-fpp" secondAttribute="bottom" constant="8" id="HFp-Xc-Op8"/>
                             <constraint firstItem="jil-gu-ivq" firstAttribute="trailing" secondItem="QnW-6e-Arz" secondAttribute="trailingMargin" id="HlP-fi-Lt8"/>
@@ -152,6 +153,7 @@
                             <constraint firstAttribute="centerY" secondItem="Rm8-md-Tco" secondAttribute="centerY" id="k9e-x4-kpN"/>
                             <constraint firstItem="bBT-d8-70t" firstAttribute="top" secondItem="2U5-FL-wfF" secondAttribute="bottom" constant="8" id="kRL-LM-DVT"/>
                             <constraint firstItem="qfR-N0-fpp" firstAttribute="top" secondItem="bBT-d8-70t" secondAttribute="bottom" constant="8" id="kSS-oG-khM"/>
+                            <constraint firstItem="Rm8-md-Tco" firstAttribute="top" secondItem="FYe-jk-1NW" secondAttribute="bottom" priority="250" constant="40" id="sbg-a3-8Mg"/>
                             <constraint firstItem="qfR-N0-fpp" firstAttribute="leading" secondItem="QnW-6e-Arz" secondAttribute="leadingMargin" id="vgG-uP-yYt"/>
                         </constraints>
                         <variation key="default">
@@ -161,11 +163,16 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="PZJ-v5-Jrj">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="DQG-V8-BfG"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="DQG-V8-BfG">
+                            <connections>
+                                <action selector="shareButtonDidPress:" destination="1XM-im-HcP" id="zvn-Zw-JQZ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="authorLabel" destination="qfR-N0-fpp" id="SIf-JJ-jmd"/>
                         <outlet property="categoryLabel" destination="FYe-jk-1NW" id="P6J-dr-IXj"/>
+                        <outlet property="checkedOutHeader" destination="jil-gu-ivq" id="f4Y-66-E9k"/>
                         <outlet property="checkedOutLabel" destination="6rX-mQ-J0E" id="NLS-x9-9ko"/>
                         <outlet property="publisherLabel" destination="UjJ-NU-QVA" id="Gvd-Kt-9qk"/>
                         <outlet property="titleLabel" destination="bBT-d8-70t" id="EAL-Vf-WbR"/>

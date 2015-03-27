@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *publisherLabel;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *checkedOutLabel;
+@property (weak, nonatomic) IBOutlet UILabel *checkedOutHeader;
 
 @end
 
@@ -26,26 +27,41 @@
     
     self.titleLabel.text = self.book.title;
     self.authorLabel.text = self.book.author;
-    if (self.book.publisher != nil) {
+    self.categoryLabel.text = [NSString stringWithFormat:@"Categories: %@", self.book.category];
+    
+    if (self.book.publisher != nil && self.book.publisher != (id)[NSNull null]) {
         self.publisherLabel.text = [NSString stringWithFormat:@"Publisher: %@", self.book.publisher];
     } else {
-        //[self.publisherLabel removeFromSuperview];
+        [self.publisherLabel removeFromSuperview];
+        [self.view setNeedsLayout];
     }
-    if (self.book.category != nil) {
-        self.categoryLabel.text = [NSString stringWithFormat:@"Categories: %@", self.book.category];
-    } else {
-        //[self.publisherLabel removeFromSuperview];
-    }
-    if (self.book.lastCheckedOutBy != nil && self.book.lastCheckedOut != nil) {
+
+    if (self.book.lastCheckedOutBy != nil && self.book.lastCheckedOutBy != (id)[NSNull null] && self.book.lastCheckedOut != nil && self.book.lastCheckedOut != (id)[NSNull null]) {
         self.checkedOutLabel.text = [NSString stringWithFormat:@"%@ at %@", self.book.lastCheckedOutBy, self.book.lastCheckedOut];
+    } else {
+        //[self.checkedOutLabel removeFromSuperview];
+        //[self.checkedOutHeader removeFromSuperview];
+        //[self.view setNeedsLayout];
     }
-    
 }
 
 #pragma mark ACTIONS
 
 - (IBAction)checkOutButtonDidPress:(id)sender {
-    NSLog(@"Checking out book...");
+    NSLog(@"Checking out");
+}
+
+- (IBAction)shareButtonDidPress:(id)sender {
+    NSString *text = [NSString stringWithFormat:@"Check out this awesome book by %@ named %@", self.book.author, self.book.title];
+    NSString *urlString = [NSString stringWithFormat:@"http://www.google.com/search?hl=en&q={%@}&btnI=I ", self.book.title];
+    NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSArray *objects = @[text, url];
+    
+    UIActivityViewController *avc = [[UIActivityViewController alloc] initWithActivityItems:objects applicationActivities:nil];
+    NSArray *excludeActivities = @[UIActivityTypePostToWeibo, UIActivityTypeMessage, UIActivityTypeMessage, UIActivityTypeMail, UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll, UIActivityTypeAddToReadingList, UIActivityTypePostToFlickr, UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo, UIActivityTypeAirDrop];
+    avc.excludedActivityTypes = excludeActivities;
+    
+    [self presentViewController:avc animated:YES completion:nil];
 }
 
 @end
