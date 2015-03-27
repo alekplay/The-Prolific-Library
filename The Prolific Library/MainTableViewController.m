@@ -10,6 +10,7 @@
 #import "BookTableViewCell.h"
 #import "Book.h"
 #import "BookDetailViewController.h"
+#import "AddBookViewController.h"
 
 @implementation MainTableViewController {
     NSMutableArray *_books;
@@ -53,7 +54,7 @@
         Book *newBook = [[Book alloc] initWithDictionary:bookDict];
         [_books addObject:newBook];
     }
-    _books = [[[_books reverseObjectEnumerator] allObjects] mutableCopy];
+    //_books = [[[_books reverseObjectEnumerator] allObjects] mutableCopy];
     [self.tableView reloadData];
 }
 
@@ -67,6 +68,15 @@
     if ([segue.identifier isEqualToString:@"BookDetailSegue"]) {
         BookDetailViewController *bdvc = [segue destinationViewController];
         bdvc.book = _books[[self.tableView.indexPathForSelectedRow row]];
+    }
+}
+
+- (IBAction)unwindToMainTableVC:(UIStoryboardSegue *)unwindSegue {
+    UIViewController *sourceVC = [unwindSegue sourceViewController];
+    if ([sourceVC isKindOfClass:[AddBookViewController class]]) {
+        NSLog(@"Back from adding book");
+    } else if ([sourceVC isKindOfClass:[BookDetailViewController class]]) {
+        NSLog(@"Back from viewing book");
     }
 }
 

@@ -52,11 +52,23 @@ static NSString *const ProlificOnlineURLString = @"http://prolific-interview.her
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:name forKey:@"lastCheckedOutBy"];
     
-    NSString *query = [NSString stringWithFormat:@"books/%lu", book.ID];
+    NSString *query = [NSString stringWithFormat:@"books/%lu", (long)book.ID];
     
     [self PUT:query parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([self.delegate respondsToSelector:@selector(booksHTTPClient:didUpdateBook:)]) {
             [self.delegate booksHTTPClient:self didUpdateBook:responseObject];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if ([self.delegate respondsToSelector:@selector(booksHTTPClient:didFailWithError:)]) {
+            [self.delegate booksHTTPClient:self didFailWithError:error];
+        }
+    }];
+}
+
+- (void)addBook:(NSDictionary *)bookDict {
+    [self POST:@"books/" parameters:bookDict success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([self.delegate respondsToSelector:@selector(booksHTTPClient:didAddBook:)]) {
+            [self.delegate booksHTTPClient:self didAddBook:responseObject];
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if ([self.delegate respondsToSelector:@selector(booksHTTPClient:didFailWithError:)]) {

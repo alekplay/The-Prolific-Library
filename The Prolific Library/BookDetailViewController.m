@@ -77,11 +77,14 @@
 
 - (void)booksHTTPClient:(BooksHTTPClient *)client didUpdateBook:(id)book {
     [self.navigationController popViewControllerAnimated:YES];
+    // ADD SPINNER, SAVE DATA IN TABLE
 }
 
 - (void)booksHTTPClient:(BooksHTTPClient *)client didFailWithError:(NSError *)error {
-    
+    // ADD ERROR MESSAGE
 }
+
+// CLEAN UP CODE
 
 #pragma mark ALERT VIEW (DELEGATE)
 

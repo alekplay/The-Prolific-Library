@@ -15,6 +15,7 @@
 @optional
 - (void)booksHTTPClient:(BooksHTTPClient *)client didUpdateWithBooks:(id)books;
 - (void)booksHTTPClient:(BooksHTTPClient *)client didUpdateBook:(id)book;
+- (void)booksHTTPClient:(BooksHTTPClient *)client didAddBook:(id)book;
 - (void)booksHTTPClient:(BooksHTTPClient *)client didFailWithError:(NSError *)error;
 @end
 
@@ -23,4 +24,5 @@
 + (BooksHTTPClient *)sharedClient;
 - (void)getBooks;
 - (void)checkOutBook:(Book *)book forUser:(NSString *)name;
+- (void)addBook:(NSDictionary *)bookDict;
 @end

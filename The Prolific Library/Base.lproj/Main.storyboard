@@ -6,6 +6,84 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Add Book-->
+        <scene sceneID="Vi7-UF-FFf">
+            <objects>
+                <viewController id="Q6E-1V-R8G" customClass="AddBookViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qep-s7-uZk"/>
+                        <viewControllerLayoutGuide type="bottom" id="QNe-Bn-D9Z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ltf-g5-QYE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Book Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c9A-5a-rtG">
+                                <rect key="frame" x="16" y="72" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Author(s)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ukc-0l-e6T">
+                                <rect key="frame" x="16" y="110" width="568" height="30"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Publisher" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x84-sv-G3e">
+                                <rect key="frame" x="16" y="148" width="568" height="30"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Categories (separated by commas)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZIP-WG-6aR">
+                                <rect key="frame" x="16" y="186" width="568" height="30"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="x84-sv-G3e" firstAttribute="top" secondItem="Ukc-0l-e6T" secondAttribute="bottom" constant="8" id="KgY-md-KEY"/>
+                            <constraint firstItem="ZIP-WG-6aR" firstAttribute="trailing" secondItem="ltf-g5-QYE" secondAttribute="trailingMargin" id="RIC-uy-BNw"/>
+                            <constraint firstItem="x84-sv-G3e" firstAttribute="leading" secondItem="ltf-g5-QYE" secondAttribute="leadingMargin" id="Sig-qY-iQo"/>
+                            <constraint firstItem="ZIP-WG-6aR" firstAttribute="top" secondItem="x84-sv-G3e" secondAttribute="bottom" constant="8" id="Tcs-2R-rhx"/>
+                            <constraint firstItem="ZIP-WG-6aR" firstAttribute="leading" secondItem="ltf-g5-QYE" secondAttribute="leadingMargin" id="XEE-x3-ylZ"/>
+                            <constraint firstItem="Ukc-0l-e6T" firstAttribute="trailing" secondItem="ltf-g5-QYE" secondAttribute="trailingMargin" id="Za7-6Z-vNv"/>
+                            <constraint firstItem="x84-sv-G3e" firstAttribute="trailing" secondItem="ltf-g5-QYE" secondAttribute="trailingMargin" id="mh3-FF-suW"/>
+                            <constraint firstItem="c9A-5a-rtG" firstAttribute="trailing" secondItem="ltf-g5-QYE" secondAttribute="trailingMargin" id="n3D-aV-1kS"/>
+                            <constraint firstItem="Ukc-0l-e6T" firstAttribute="leading" secondItem="ltf-g5-QYE" secondAttribute="leadingMargin" id="nT0-gg-UeN"/>
+                            <constraint firstItem="Ukc-0l-e6T" firstAttribute="top" secondItem="c9A-5a-rtG" secondAttribute="bottom" constant="8" id="o1l-gN-pHc"/>
+                            <constraint firstItem="c9A-5a-rtG" firstAttribute="top" secondItem="qep-s7-uZk" secondAttribute="bottom" constant="8" id="s0w-Xb-Fn7"/>
+                            <constraint firstItem="c9A-5a-rtG" firstAttribute="leading" secondItem="ltf-g5-QYE" secondAttribute="leadingMargin" id="w7Q-Nf-ZOt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Book" id="oJR-Du-gsM">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Adf-Yn-DUp">
+                            <connections>
+                                <action selector="cancelButtonDidPress:" destination="Q6E-1V-R8G" id="kzg-SA-53x"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="F3q-X5-J1D">
+                            <connections>
+                                <action selector="saveButtonDidPress:" destination="Q6E-1V-R8G" id="1US-cc-X4U"/>
+                                <segue destination="9gN-e7-CSk" kind="unwind" unwindAction="unwindToMainTableVC:" id="AcE-8g-nxq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bookAuthorTextField" destination="Ukc-0l-e6T" id="H1R-dy-h0v"/>
+                        <outlet property="bookCategoriesTextField" destination="ZIP-WG-6aR" id="wUP-Sh-dTa"/>
+                        <outlet property="bookPublisherTextField" destination="x84-sv-G3e" id="5h3-LG-1hW"/>
+                        <outlet property="bookTitleTextField" destination="c9A-5a-rtG" id="LYW-cB-Y8s"/>
+                        <outlet property="saveBarButtonItem" destination="F3q-X5-J1D" id="fEy-nX-yp2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iav-j3-dux" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="9gN-e7-CSk" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1627" y="-650"/>
+        </scene>
         <!--Books-->
         <scene sceneID="TTK-RY-7XG">
             <objects>
@@ -63,7 +141,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Books" id="Zm6-1s-pR5">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="9L9-Nw-bxo"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="9L9-Nw-bxo">
+                            <connections>
+                                <segue destination="CJn-Mt-Lch" kind="presentation" id="FGA-Yt-ofr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h2U-6r-xkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -199,6 +281,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NY1-PA-DgJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="65" y="62"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2oN-d2-ByE">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CJn-Mt-Lch" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B1o-EI-nHj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Q6E-1V-R8G" kind="relationship" relationship="rootViewController" id="Zz0-Uc-6sq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y6U-J6-e5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="857" y="-650"/>
         </scene>
     </scenes>
 </document>
