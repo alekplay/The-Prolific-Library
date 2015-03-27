@@ -9,6 +9,7 @@
 #import "MainTableViewController.h"
 #import "BookTableViewCell.h"
 #import "Book.h"
+#import "BookDetailViewController.h"
 
 @implementation MainTableViewController {
     NSMutableArray *_books;
@@ -26,7 +27,11 @@
     [client getBooks];
 }
 
-#pragma mark TABLE VIEW DELEGATE
+#pragma mark TABLE VIEW DATA SOURCE & DELEGATE
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 70.0f;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [_books count];
@@ -54,6 +59,15 @@
 
 - (void)booksHTTPClient:(BooksHTTPClient *)client didFailWithError:(NSError *)error {
     NSLog(@"Failed: %@", error);
+}
+
+#pragma mark OTHER
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"BookDetailSegue"]) {
+        BookDetailViewController *bdvc = [segue destinationViewController];
+        bdvc.book = _books[[self.tableView.indexPathForSelectedRow row]];
+    }
 }
 
 @end

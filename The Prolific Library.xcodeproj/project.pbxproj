@@ -26,6 +26,7 @@
 		285B234F1AC125400083E735 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B23461AC125400083E735 /* AFURLSessionManager.m */; };
 		285B238C1AC4DBE10083E735 /* BooksHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B238B1AC4DBE10083E735 /* BooksHTTPClient.m */; };
 		285B23901AC4DF040083E735 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B238F1AC4DF040083E735 /* Book.m */; };
+		285B23931AC4FF960083E735 /* BookDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B23921AC4FF960083E735 /* BookDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,8 @@
 		285B238B1AC4DBE10083E735 /* BooksHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooksHTTPClient.m; sourceTree = "<group>"; };
 		285B238E1AC4DF040083E735 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
 		285B238F1AC4DF040083E735 /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
+		285B23911AC4FF960083E735 /* BookDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookDetailViewController.h; sourceTree = "<group>"; };
+		285B23921AC4FF960083E735 /* BookDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +166,8 @@
 			children = (
 				281BA1351AC11584002340C8 /* MainTableViewController.h */,
 				281BA1361AC11584002340C8 /* MainTableViewController.m */,
+				285B23911AC4FF960083E735 /* BookDetailViewController.h */,
+				285B23921AC4FF960083E735 /* BookDetailViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -315,6 +320,7 @@
 			files = (
 				285B23311AC11F810083E735 /* BookTableViewCell.m in Sources */,
 				285B238C1AC4DBE10083E735 /* BooksHTTPClient.m in Sources */,
+				285B23931AC4FF960083E735 /* BookDetailViewController.m in Sources */,
 				285B234B1AC125400083E735 /* AFSecurityPolicy.m in Sources */,
 				281BA1141AC114E2002340C8 /* AppDelegate.m in Sources */,
 				285B23481AC125400083E735 /* AFHTTPRequestOperationManager.m in Sources */,
@@ -403,7 +409,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -438,7 +444,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

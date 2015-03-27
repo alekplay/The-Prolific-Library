@@ -19,5 +19,6 @@
 @property (nonatomic, strong) NSString *publisher;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *url;
+@property (nonatomic) NSInteger ID;
 
 @end
