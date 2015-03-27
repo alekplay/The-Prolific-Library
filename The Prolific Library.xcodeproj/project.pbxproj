@@ -9,11 +9,21 @@
 /* Begin PBXBuildFile section */
 		281BA1111AC114E2002340C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 281BA1101AC114E2002340C8 /* main.m */; };
 		281BA1141AC114E2002340C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 281BA1131AC114E2002340C8 /* AppDelegate.m */; };
-		281BA1171AC114E2002340C8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 281BA1161AC114E2002340C8 /* ViewController.m */; };
 		281BA11A1AC114E2002340C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 281BA1181AC114E2002340C8 /* Main.storyboard */; };
 		281BA11C1AC114E2002340C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 281BA11B1AC114E2002340C8 /* Images.xcassets */; };
 		281BA11F1AC114E2002340C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281BA11D1AC114E2002340C8 /* LaunchScreen.xib */; };
 		281BA12B1AC114E2002340C8 /* The_Prolific_LibraryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 281BA12A1AC114E2002340C8 /* The_Prolific_LibraryTests.m */; };
+		281BA1371AC11584002340C8 /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 281BA1361AC11584002340C8 /* MainTableViewController.m */; };
+		285B23311AC11F810083E735 /* BookTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B23301AC11F810083E735 /* BookTableViewCell.m */; };
+		285B23471AC125400083E735 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B23351AC125400083E735 /* AFHTTPRequestOperation.m */; };
+		285B23481AC125400083E735 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B23371AC125400083E735 /* AFHTTPRequestOperationManager.m */; };
+		285B23491AC125400083E735 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B23391AC125400083E735 /* AFHTTPSessionManager.m */; };
+		285B234A1AC125400083E735 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B233C1AC125400083E735 /* AFNetworkReachabilityManager.m */; };
+		285B234B1AC125400083E735 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B233E1AC125400083E735 /* AFSecurityPolicy.m */; };
+		285B234C1AC125400083E735 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B23401AC125400083E735 /* AFURLConnectionOperation.m */; };
+		285B234D1AC125400083E735 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B23421AC125400083E735 /* AFURLRequestSerialization.m */; };
+		285B234E1AC125400083E735 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B23441AC125400083E735 /* AFURLResponseSerialization.m */; };
+		285B234F1AC125400083E735 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B23461AC125400083E735 /* AFURLSessionManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +42,35 @@
 		281BA1101AC114E2002340C8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		281BA1121AC114E2002340C8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		281BA1131AC114E2002340C8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		281BA1151AC114E2002340C8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		281BA1161AC114E2002340C8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		281BA1191AC114E2002340C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		281BA11B1AC114E2002340C8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		281BA11E1AC114E2002340C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		281BA1241AC114E2002340C8 /* The Prolific LibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The Prolific LibraryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		281BA1291AC114E2002340C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		281BA12A1AC114E2002340C8 /* The_Prolific_LibraryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = The_Prolific_LibraryTests.m; sourceTree = "<group>"; };
+		281BA1351AC11584002340C8 /* MainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
+		281BA1361AC11584002340C8 /* MainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewController.m; sourceTree = "<group>"; };
+		285B232F1AC11F810083E735 /* BookTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookTableViewCell.h; sourceTree = "<group>"; };
+		285B23301AC11F810083E735 /* BookTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookTableViewCell.m; sourceTree = "<group>"; };
+		285B23341AC125400083E735 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		285B23351AC125400083E735 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		285B23361AC125400083E735 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		285B23371AC125400083E735 /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		285B23381AC125400083E735 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		285B23391AC125400083E735 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		285B233A1AC125400083E735 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		285B233B1AC125400083E735 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		285B233C1AC125400083E735 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		285B233D1AC125400083E735 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		285B233E1AC125400083E735 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		285B233F1AC125400083E735 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		285B23401AC125400083E735 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		285B23411AC125400083E735 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		285B23421AC125400083E735 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		285B23431AC125400083E735 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		285B23441AC125400083E735 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		285B23451AC125400083E735 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		285B23461AC125400083E735 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,13 +112,14 @@
 		281BA10D1AC114E2002340C8 /* The Prolific Library */ = {
 			isa = PBXGroup;
 			children = (
+				285B23331AC125400083E735 /* AFNetworking */,
 				281BA1121AC114E2002340C8 /* AppDelegate.h */,
 				281BA1131AC114E2002340C8 /* AppDelegate.m */,
-				281BA1151AC114E2002340C8 /* ViewController.h */,
-				281BA1161AC114E2002340C8 /* ViewController.m */,
+				285B23321AC11F860083E735 /* Views */,
+				281BA1341AC114FD002340C8 /* Controllers */,
 				281BA1181AC114E2002340C8 /* Main.storyboard */,
-				281BA11B1AC114E2002340C8 /* Images.xcassets */,
 				281BA11D1AC114E2002340C8 /* LaunchScreen.xib */,
+				281BA11B1AC114E2002340C8 /* Images.xcassets */,
 				281BA10E1AC114E2002340C8 /* Supporting Files */,
 			);
 			path = "The Prolific Library";
@@ -117,6 +149,50 @@
 				281BA1291AC114E2002340C8 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		281BA1341AC114FD002340C8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				281BA1351AC11584002340C8 /* MainTableViewController.h */,
+				281BA1361AC11584002340C8 /* MainTableViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		285B23321AC11F860083E735 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				285B232F1AC11F810083E735 /* BookTableViewCell.h */,
+				285B23301AC11F810083E735 /* BookTableViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		285B23331AC125400083E735 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				285B23341AC125400083E735 /* AFHTTPRequestOperation.h */,
+				285B23351AC125400083E735 /* AFHTTPRequestOperation.m */,
+				285B23361AC125400083E735 /* AFHTTPRequestOperationManager.h */,
+				285B23371AC125400083E735 /* AFHTTPRequestOperationManager.m */,
+				285B23381AC125400083E735 /* AFHTTPSessionManager.h */,
+				285B23391AC125400083E735 /* AFHTTPSessionManager.m */,
+				285B233A1AC125400083E735 /* AFNetworking.h */,
+				285B233B1AC125400083E735 /* AFNetworkReachabilityManager.h */,
+				285B233C1AC125400083E735 /* AFNetworkReachabilityManager.m */,
+				285B233D1AC125400083E735 /* AFSecurityPolicy.h */,
+				285B233E1AC125400083E735 /* AFSecurityPolicy.m */,
+				285B233F1AC125400083E735 /* AFURLConnectionOperation.h */,
+				285B23401AC125400083E735 /* AFURLConnectionOperation.m */,
+				285B23411AC125400083E735 /* AFURLRequestSerialization.h */,
+				285B23421AC125400083E735 /* AFURLRequestSerialization.m */,
+				285B23431AC125400083E735 /* AFURLResponseSerialization.h */,
+				285B23441AC125400083E735 /* AFURLResponseSerialization.m */,
+				285B23451AC125400083E735 /* AFURLSessionManager.h */,
+				285B23461AC125400083E735 /* AFURLSessionManager.m */,
+			);
+			path = AFNetworking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +295,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				281BA1171AC114E2002340C8 /* ViewController.m in Sources */,
+				285B23311AC11F810083E735 /* BookTableViewCell.m in Sources */,
+				285B234B1AC125400083E735 /* AFSecurityPolicy.m in Sources */,
 				281BA1141AC114E2002340C8 /* AppDelegate.m in Sources */,
+				285B23481AC125400083E735 /* AFHTTPRequestOperationManager.m in Sources */,
+				285B234C1AC125400083E735 /* AFURLConnectionOperation.m in Sources */,
+				285B23471AC125400083E735 /* AFHTTPRequestOperation.m in Sources */,
 				281BA1111AC114E2002340C8 /* main.m in Sources */,
+				285B234D1AC125400083E735 /* AFURLRequestSerialization.m in Sources */,
+				285B23491AC125400083E735 /* AFHTTPSessionManager.m in Sources */,
+				285B234A1AC125400083E735 /* AFNetworkReachabilityManager.m in Sources */,
+				285B234E1AC125400083E735 /* AFURLResponseSerialization.m in Sources */,
+				285B234F1AC125400083E735 /* AFURLSessionManager.m in Sources */,
+				281BA1371AC11584002340C8 /* MainTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,8 +430,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "The Prolific Library/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -354,8 +442,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "The Prolific Library/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -412,6 +502,7 @@
 				281BA1301AC114E2002340C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		281BA1311AC114E2002340C8 /* Build configuration list for PBXNativeTarget "The Prolific LibraryTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +511,7 @@
 				281BA1331AC114E2002340C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
