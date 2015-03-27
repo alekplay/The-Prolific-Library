@@ -8,6 +8,7 @@
 
 #import "MainTableViewController.h"
 #import "BookTableViewCell.h"
+#import "Book.h"
 
 @implementation MainTableViewController {
     NSMutableArray *_books;
@@ -18,11 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSMutableDictionary *book = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                 @"The Core iOS Developer's Cookbook", @"title",
-                                 @"Erica Sadum", @"author",
-                                 nil];
-    _books = [NSMutableArray arrayWithObjects:book, nil];
+    _books = [NSMutableArray array];
+    
+    BooksHTTPClient *client = [BooksHTTPClient sharedClient];
+    client.delegate = self;
+    [client getBooks];
 }
 
 #pragma mark TABLE VIEW DELEGATE
@@ -32,12 +33,27 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSMutableDictionary *book = _books[indexPath.row];
+    Book *book = _books[indexPath.row];
     
     BookTableViewCell *cell = (BookTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"BookCell"];
-    cell.authorLabel.text = [book objectForKey:@"author"];
-    cell.titleLabel.text = [book objectForKey:@"title"];
+    cell.authorLabel.text = book.author;
+    cell.titleLabel.text = book.title;
     return cell;
+}
+
+#pragma mark BOOKS HTTP CLIENT DELEGATE
+
+- (void)booksHTTPClient:(BooksHTTPClient *)client didUpdateWithBooks:(id)books {
+    for (NSDictionary *bookDict in books) {
+        Book *newBook = [[Book alloc] initWithDictionary:bookDict];
+        [_books addObject:newBook];
+    }
+    
+    [self.tableView reloadData];
+}
+
+- (void)booksHTTPClient:(BooksHTTPClient *)client didFailWithError:(NSError *)error {
+    NSLog(@"Failed: %@", error);
 }
 
 @end

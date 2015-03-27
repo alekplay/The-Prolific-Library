@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BooksHTTPClient.h"
 
-@interface MainTableViewController : UITableViewController
+@interface MainTableViewController : UITableViewController <BooksHTTPClientDelegate>
 
 @end
