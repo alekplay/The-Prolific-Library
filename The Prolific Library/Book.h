@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) NSString *author;
 @property (nonatomic, strong) NSString *category;
-@property (nonatomic, strong) NSDate *lastCheckedOut;
+@property (nonatomic, strong) NSString *lastCheckedOut;
 @property (nonatomic, strong) NSString *lastCheckedOutBy;
 @property (nonatomic, strong) NSString *publisher;
 @property (nonatomic, strong) NSString *title;

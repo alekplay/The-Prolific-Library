@@ -7,11 +7,14 @@
 //
 
 #import "AFHTTPSessionManager.h"
+#import "Book.h"
 
 @class BooksHTTPClient;
 
 @protocol BooksHTTPClientDelegate <NSObject>
+@optional
 - (void)booksHTTPClient:(BooksHTTPClient *)client didUpdateWithBooks:(id)books;
+- (void)booksHTTPClient:(BooksHTTPClient *)client didUpdateBook:(id)book;
 - (void)booksHTTPClient:(BooksHTTPClient *)client didFailWithError:(NSError *)error;
 @end
 
@@ -19,4 +22,5 @@
 @property (nonatomic, weak) id<BooksHTTPClientDelegate> delegate;
 + (BooksHTTPClient *)sharedClient;
 - (void)getBooks;
+- (void)checkOutBook:(Book *)book forUser:(NSString *)name;
 @end

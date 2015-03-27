@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Book.h"
+#import "BooksHTTPClient.h"
 
-@interface BookDetailViewController : UIViewController
+@interface BookDetailViewController : UIViewController <BooksHTTPClientDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) Book *book;
 

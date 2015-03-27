@@ -53,7 +53,7 @@
         Book *newBook = [[Book alloc] initWithDictionary:bookDict];
         [_books addObject:newBook];
     }
-    
+    _books = [[[_books reverseObjectEnumerator] allObjects] mutableCopy];
     [self.tableView reloadData];
 }
 

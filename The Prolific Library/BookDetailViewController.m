@@ -37,18 +37,27 @@
     }
 
     if (self.book.lastCheckedOutBy != nil && self.book.lastCheckedOutBy != (id)[NSNull null] && self.book.lastCheckedOut != nil && self.book.lastCheckedOut != (id)[NSNull null]) {
-        self.checkedOutLabel.text = [NSString stringWithFormat:@"%@ at %@", self.book.lastCheckedOutBy, self.book.lastCheckedOut];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        NSDate *date = [dateFormatter dateFromString:self.book.lastCheckedOut];
+        [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+        [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+        NSString *dateString = [dateFormatter stringFromDate:date];
+        
+        self.checkedOutLabel.text = [NSString stringWithFormat:@"%@ at %@", self.book.lastCheckedOutBy, dateString];
     } else {
-        //[self.checkedOutLabel removeFromSuperview];
-        //[self.checkedOutHeader removeFromSuperview];
-        //[self.view setNeedsLayout];
+        [self.checkedOutLabel removeFromSuperview];
+        [self.checkedOutHeader removeFromSuperview];
+        [self.view setNeedsLayout];
     }
 }
 
 #pragma mark ACTIONS
 
 - (IBAction)checkOutButtonDidPress:(id)sender {
-    NSLog(@"Checking out");
+    [self askForName];
 }
 
 - (IBAction)shareButtonDidPress:(id)sender {
@@ -62,6 +71,41 @@
     avc.excludedActivityTypes = excludeActivities;
     
     [self presentViewController:avc animated:YES completion:nil];
+}
+
+#pragma mark BOOKS HTTP CLIENT DELEGATE
+
+- (void)booksHTTPClient:(BooksHTTPClient *)client didUpdateBook:(id)book {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)booksHTTPClient:(BooksHTTPClient *)client didFailWithError:(NSError *)error {
+    
+}
+
+#pragma mark ALERT VIEW (DELEGATE)
+
+- (void)askForName {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Please enter your name" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Checkout", nil];
+    [alertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Checkout"]) {
+        NSString *name = [[alertView textFieldAtIndex:0] text];
+        
+        if ([name length] > 0) {
+            BooksHTTPClient *client = [BooksHTTPClient sharedClient];
+            client.delegate = self;
+            [client checkOutBook:self.book forUser:name];
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't checkout book" message:@"You need to provide a name before checking out your book" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert show];
+        }
+    } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Ok"]) {
+        [self askForName];
+    }
 }
 
 @end

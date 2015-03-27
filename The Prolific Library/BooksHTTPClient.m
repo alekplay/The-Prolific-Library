@@ -28,6 +28,7 @@ static NSString *const ProlificOnlineURLString = @"http://prolific-interview.her
 - (instancetype)initWithBaseURL:(NSURL *)url {
     if (self = [super initWithBaseURL:url]) {
         self.responseSerializer = [AFJSONResponseSerializer serializer];
+        self.requestSerializer = [AFJSONRequestSerializer serializer];
     }
     
     return self;
@@ -39,6 +40,23 @@ static NSString *const ProlificOnlineURLString = @"http://prolific-interview.her
     [self GET:@"books" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([self.delegate respondsToSelector:@selector(booksHTTPClient:didUpdateWithBooks:)]) {
             [self.delegate booksHTTPClient:self didUpdateWithBooks:responseObject];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if ([self.delegate respondsToSelector:@selector(booksHTTPClient:didFailWithError:)]) {
+            [self.delegate booksHTTPClient:self didFailWithError:error];
+        }
+    }];
+}
+
+- (void)checkOutBook:(Book *)book forUser:(NSString *)name {
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:name forKey:@"lastCheckedOutBy"];
+    
+    NSString *query = [NSString stringWithFormat:@"books/%lu", book.ID];
+    
+    [self PUT:query parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([self.delegate respondsToSelector:@selector(booksHTTPClient:didUpdateBook:)]) {
+            [self.delegate booksHTTPClient:self didUpdateBook:responseObject];
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if ([self.delegate respondsToSelector:@selector(booksHTTPClient:didFailWithError:)]) {
