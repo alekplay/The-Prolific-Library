@@ -23,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.bookTitleTextField becomeFirstResponder];
+    
     if (self.book != nil) {
         self.title = @"Edit book";
         self.bookTitleTextField.text = self.book.title;
