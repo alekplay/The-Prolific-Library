@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "BooksHTTPClient.h"
+#import "BookDetailViewController.h"
+#import "AddBookViewController.h"
 
-@interface MainTableViewController : UITableViewController <BooksHTTPClientDelegate>
+@interface MainTableViewController : UITableViewController <BooksHTTPClientDelegate, UIAlertViewDelegate, BookDetailVCDelegate, AddBookVCDelegate>
 
 @end

@@ -11,6 +11,7 @@
 @interface Book : NSObject
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
+- (void)updateBookWithDictionary:(NSDictionary *)dict;
 
 @property (nonatomic, strong) NSString *author;
 @property (nonatomic, strong) NSString *category;

@@ -77,4 +77,39 @@ static NSString *const ProlificOnlineURLString = @"http://prolific-interview.her
     }];
 }
 
+- (void)deleteBook:(Book *)book {
+    NSString *query = [NSString stringWithFormat:@"books/%lu", (long)book.ID];
+    [self DELETE:query parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"Success Deleting book");
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if ([self.delegate respondsToSelector:@selector(booksHTTPClient:didFailWithError:)]) {
+            [self.delegate booksHTTPClient:self didFailWithError:error];
+        }
+    }];
+}
+
+- (void)deleteAllBooks {
+    [self DELETE:@"clean" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"Successfully deleted all books");
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if ([self.delegate respondsToSelector:@selector(booksHTTPClient:didFailWithError:)]) {
+            [self.delegate booksHTTPClient:self didFailWithError:error];
+        }
+    }];
+}
+
+- (void)editBook:(Book *)book withDict:(NSDictionary *)bookDict {
+    NSString *query = [NSString stringWithFormat:@"books/%lu", (long)book.ID];
+    
+    [self PUT:query parameters:bookDict success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([self.delegate respondsToSelector:@selector(booksHTTPClient:didUpdateBook:)]) {
+            [self.delegate booksHTTPClient:self didUpdateBook:responseObject];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if ([self.delegate respondsToSelector:@selector(booksHTTPClient:didFailWithError:)]) {
+            [self.delegate booksHTTPClient:self didFailWithError:error];
+        }
+    }];
+}
+
 @end

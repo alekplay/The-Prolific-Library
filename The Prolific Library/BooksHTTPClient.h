@@ -25,4 +25,7 @@
 - (void)getBooks;
 - (void)checkOutBook:(Book *)book forUser:(NSString *)name;
 - (void)addBook:(NSDictionary *)bookDict;
+- (void)deleteBook:(Book *)book;
+- (void)deleteAllBooks;
+- (void)editBook:(Book *)book withDict:(NSDictionary *)bookDict;
 @end

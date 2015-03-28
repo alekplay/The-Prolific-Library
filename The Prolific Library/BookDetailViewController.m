@@ -7,6 +7,7 @@
 //
 
 #import "BookDetailViewController.h"
+#import "AddBookViewController.h"
 
 @interface BookDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -29,13 +30,21 @@
     self.authorLabel.text = self.book.author;
     self.categoryLabel.text = [NSString stringWithFormat:@"Categories: %@", self.book.category];
     
-    if (self.book.publisher != nil && self.book.publisher != (id)[NSNull null]) {
+    [self layOutData];
+}
+
+- (void)layOutData {
+    self.titleLabel.text = self.book.title;
+    self.authorLabel.text = self.book.author;
+    self.categoryLabel.text = [NSString stringWithFormat:@"Categories: %@", self.book.category];
+    
+    if (self.book.publisher != nil && self.book.publisher != (id)[NSNull null] && [self.book.publisher length] > 0) {
         self.publisherLabel.text = [NSString stringWithFormat:@"Publisher: %@", self.book.publisher];
     } else {
         [self.publisherLabel removeFromSuperview];
         [self.view setNeedsLayout];
     }
-
+    
     if (self.book.lastCheckedOutBy != nil && self.book.lastCheckedOutBy != (id)[NSNull null] && self.book.lastCheckedOut != nil && self.book.lastCheckedOut != (id)[NSNull null]) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
@@ -73,15 +82,27 @@
     [self presentViewController:avc animated:YES completion:nil];
 }
 
+- (IBAction)editBookButtonDidPress:(id)sender {
+    UINavigationController *addBookNavigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddBookNavigationController"];
+    AddBookViewController *addBookViewController = addBookNavigationController.viewControllers[0];
+    addBookViewController.book = self.book;
+    addBookViewController.currentStyle = AddBookVCStyleEditingBook;
+    addBookViewController.delegate = self;
+    [self presentViewController:addBookNavigationController animated:YES completion:nil];
+}
+
 #pragma mark BOOKS HTTP CLIENT DELEGATE
 
 - (void)booksHTTPClient:(BooksHTTPClient *)client didUpdateBook:(id)book {
+    [self.book updateBookWithDictionary:book];
+    [self.delegate updatedBook:self.book];
     [self.navigationController popViewControllerAnimated:YES];
-    // ADD SPINNER, SAVE DATA IN TABLE
+    // ADD SPINNER
 }
 
 - (void)booksHTTPClient:(BooksHTTPClient *)client didFailWithError:(NSError *)error {
-    // ADD ERROR MESSAGE
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"We could not checkout this book. Please try again later" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    [alertView show];
 }
 
 // CLEAN UP CODE
@@ -109,6 +130,14 @@
     } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Ok"]) {
         [self askForName];
     }
+}
+
+#pragma mark ADD BOOK VIEW CONTROLLER DELEGATE
+
+- (void)updateBook:(Book *)book {
+    self.book = book;
+    [self layOutData];
+    [self.delegate updatedBook:book];
 }
 
 @end

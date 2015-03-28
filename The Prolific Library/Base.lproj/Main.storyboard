@@ -67,7 +67,6 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="F3q-X5-J1D">
                             <connections>
                                 <action selector="saveButtonDidPress:" destination="Q6E-1V-R8G" id="1US-cc-X4U"/>
-                                <segue destination="9gN-e7-CSk" kind="unwind" unwindAction="unwindToMainTableVC:" id="AcE-8g-nxq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -80,7 +79,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iav-j3-dux" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="9gN-e7-CSk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1627" y="-650"/>
         </scene>
@@ -141,9 +139,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Books" id="Zm6-1s-pR5">
+                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="A0l-r1-0dq">
+                            <connections>
+                                <action selector="trashButtonDidPress:" destination="YGa-Qy-OH0" id="xbr-rm-ghL"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="9L9-Nw-bxo">
                             <connections>
-                                <segue destination="CJn-Mt-Lch" kind="presentation" id="FGA-Yt-ofr"/>
+                                <segue destination="CJn-Mt-Lch" kind="presentation" identifier="AddBookSegue" id="FGA-Yt-ofr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -210,6 +213,16 @@
                                     <action selector="checkOutButtonDidPress:" destination="1XM-im-HcP" eventType="touchUpInside" id="wNy-ql-6vT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="guy-5S-iVa">
+                                <rect key="frame" x="16" y="325" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Edit book">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="editBookButtonDidPress:" destination="1XM-im-HcP" eventType="touchUpInside" id="Byw-85-TDC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -235,7 +248,10 @@
                             <constraint firstAttribute="centerY" secondItem="Rm8-md-Tco" secondAttribute="centerY" id="k9e-x4-kpN"/>
                             <constraint firstItem="bBT-d8-70t" firstAttribute="top" secondItem="2U5-FL-wfF" secondAttribute="bottom" constant="8" id="kRL-LM-DVT"/>
                             <constraint firstItem="qfR-N0-fpp" firstAttribute="top" secondItem="bBT-d8-70t" secondAttribute="bottom" constant="8" id="kSS-oG-khM"/>
+                            <constraint firstItem="guy-5S-iVa" firstAttribute="trailing" secondItem="QnW-6e-Arz" secondAttribute="trailingMargin" id="mKo-kp-UTy"/>
+                            <constraint firstItem="guy-5S-iVa" firstAttribute="leading" secondItem="QnW-6e-Arz" secondAttribute="leadingMargin" id="qbf-hd-rAN"/>
                             <constraint firstItem="Rm8-md-Tco" firstAttribute="top" secondItem="FYe-jk-1NW" secondAttribute="bottom" priority="250" constant="40" id="sbg-a3-8Mg"/>
+                            <constraint firstItem="guy-5S-iVa" firstAttribute="top" secondItem="Rm8-md-Tco" secondAttribute="bottom" constant="10" id="v9K-5w-mKd"/>
                             <constraint firstItem="qfR-N0-fpp" firstAttribute="leading" secondItem="QnW-6e-Arz" secondAttribute="leadingMargin" id="vgG-uP-yYt"/>
                         </constraints>
                         <variation key="default">
@@ -285,7 +301,7 @@
         <!--Navigation Controller-->
         <scene sceneID="2oN-d2-ByE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CJn-Mt-Lch" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AddBookNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="CJn-Mt-Lch" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="B1o-EI-nHj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

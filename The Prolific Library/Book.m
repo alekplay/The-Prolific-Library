@@ -14,17 +14,25 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
     if (self = [super init]) {
-        self.author = [dict objectForKey:@"author"];
-        self.category = [dict objectForKey:@"categories"];
-        self.lastCheckedOut = [dict objectForKey:@"lastCheckedOut"];
-        self.lastCheckedOutBy = [dict objectForKey:@"lastCheckedOutBy"];
-        self.publisher = [dict objectForKey:@"publisher"];
-        self.title = [dict objectForKey:@"title"];
-        self.url = [dict objectForKey:@"url"];
-        self.ID = [[dict objectForKey:@"id"] integerValue];
+        [self setUpBookWithDictionary:dict];
     }
     
     return self;
+}
+
+- (void)updateBookWithDictionary:(NSDictionary *)dict {
+    [self setUpBookWithDictionary:dict];
+}
+
+- (void)setUpBookWithDictionary:(NSDictionary *)dict {
+    self.author = [dict objectForKey:@"author"];
+    self.category = [dict objectForKey:@"categories"];
+    self.lastCheckedOut = [dict objectForKey:@"lastCheckedOut"];
+    self.lastCheckedOutBy = [dict objectForKey:@"lastCheckedOutBy"];
+    self.publisher = [dict objectForKey:@"publisher"];
+    self.title = [dict objectForKey:@"title"];
+    self.url = [dict objectForKey:@"url"];
+    self.ID = [[dict objectForKey:@"id"] integerValue];
 }
 
 @end

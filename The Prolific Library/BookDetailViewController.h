@@ -9,9 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "Book.h"
 #import "BooksHTTPClient.h"
+#import "AddBookViewController.h"
 
-@interface BookDetailViewController : UIViewController <BooksHTTPClientDelegate, UIAlertViewDelegate>
+@class BookDetailViewController;
 
+@protocol BookDetailVCDelegate <NSObject>
+- (void)updatedBook:(Book *)book;
+@end
+
+@interface BookDetailViewController : UIViewController <BooksHTTPClientDelegate, UIAlertViewDelegate, AddBookVCDelegate>
+@property (nonatomic, weak) id<BookDetailVCDelegate>delegate;
 @property (nonatomic, strong) Book *book;
-
 @end
