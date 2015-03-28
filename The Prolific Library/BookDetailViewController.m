@@ -8,6 +8,8 @@
 
 #import "BookDetailViewController.h"
 #import "AddBookViewController.h"
+#import "ShareDialog.h"
+#import "CheckoutTimeFormatter.h"
 
 @interface BookDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -26,10 +28,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.titleLabel.text = self.book.title;
-    self.authorLabel.text = self.book.author;
-    self.categoryLabel.text = [NSString stringWithFormat:@"Categories: %@", self.book.category];
-    
     [self layOutData];
 }
 
@@ -46,15 +44,7 @@
     }
     
     if (self.book.lastCheckedOutBy != nil && self.book.lastCheckedOutBy != (id)[NSNull null] && self.book.lastCheckedOut != nil && self.book.lastCheckedOut != (id)[NSNull null]) {
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-        NSDate *date = [dateFormatter dateFromString:self.book.lastCheckedOut];
-        [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-        [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
-        NSString *dateString = [dateFormatter stringFromDate:date];
-        
+        NSString *dateString = [[CheckoutTimeFormatter sharedFormatter] convertAndFormatDateString:self.book.lastCheckedOut];
         self.checkedOutLabel.text = [NSString stringWithFormat:@"%@ at %@", self.book.lastCheckedOutBy, dateString];
     } else {
         [self.checkedOutLabel removeFromSuperview];
@@ -70,16 +60,7 @@
 }
 
 - (IBAction)shareButtonDidPress:(id)sender {
-    NSString *text = [NSString stringWithFormat:@"Check out this awesome book by %@ named %@", self.book.author, self.book.title];
-    NSString *urlString = [NSString stringWithFormat:@"http://www.google.com/search?hl=en&q={%@}&btnI=I ", self.book.title];
-    NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSArray *objects = @[text, url];
-    
-    UIActivityViewController *avc = [[UIActivityViewController alloc] initWithActivityItems:objects applicationActivities:nil];
-    NSArray *excludeActivities = @[UIActivityTypePostToWeibo, UIActivityTypeMessage, UIActivityTypeMessage, UIActivityTypeMail, UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll, UIActivityTypeAddToReadingList, UIActivityTypePostToFlickr, UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo, UIActivityTypeAirDrop];
-    avc.excludedActivityTypes = excludeActivities;
-    
-    [self presentViewController:avc animated:YES completion:nil];
+    [self presentViewController:[[ShareDialog alloc] initWithBook:self.book.title andAuthor:self.book.author] animated:YES completion:nil];
 }
 
 - (IBAction)editBookButtonDidPress:(id)sender {
@@ -97,15 +78,12 @@
     [self.book updateBookWithDictionary:book];
     [self.delegate updatedBook:self.book];
     [self.navigationController popViewControllerAnimated:YES];
-    // ADD SPINNER
 }
 
 - (void)booksHTTPClient:(BooksHTTPClient *)client didFailWithError:(NSError *)error {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"We could not checkout this book. Please try again later" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
     [alertView show];
 }
-
-// CLEAN UP CODE
 
 #pragma mark ALERT VIEW (DELEGATE)
 

@@ -60,7 +60,6 @@
         Book *newBook = [[Book alloc] initWithDictionary:bookDict];
         [_books addObject:newBook];
     }
-    //_books = [[[_books reverseObjectEnumerator] allObjects] mutableCopy];
     [self.tableView reloadData];
 }
 
@@ -72,14 +71,14 @@
 #pragma mark ACTIONS
 
 - (IBAction)trashButtonDidPress:(id)sender {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Are you sure?" message:@"Do you really want to delete all the books from the library?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Are you sure?" message:@"Do you really want to delete all the books from the library?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes, delete", nil];
     [alertView show];
 }
 
 #pragma mark ALERT VIEW DELEGATE
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Yes"]) {
+    if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Yes, delete"]) {
         [[BooksHTTPClient sharedClient] deleteAllBooks];
         [_books removeAllObjects];
         [self.tableView reloadData];

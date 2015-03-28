@@ -53,7 +53,6 @@
             [client editBook:self.book withDict:bookDict];
         }
         
-        
         [self.saveBarButtonItem setEnabled:NO];
     } else {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Title and Author are required" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
@@ -90,7 +89,8 @@
 }
 
 - (void)booksHTTPClient:(BooksHTTPClient *)client didFailWithError:(NSError *)error {
-    NSLog(@"Failed with error: %@", [error localizedDescription]);
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+    [alertView show];
     
     [self.saveBarButtonItem setEnabled:YES];
 }
